@@ -43,8 +43,8 @@
   
 
   # Desktop
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.xserver.desktopManager.budgie.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
 
 
   # Graphics Card Support
@@ -99,6 +99,7 @@
 
   # System Packages
   environment.systemPackages = with pkgs; [
+    kitty
     alacritty
     pciutils
     librewolf
@@ -112,14 +113,9 @@
 
   
   # Excluded Packages
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    kate
-    elisa
-    gwenview
-    okular
-    plasma-browser-integration
-    konsole
-    oxygen
+  environment.budgie.excludePackages = with pkgs; [
+    vlc
+    mate.mate-terminal
   ];
 
 
