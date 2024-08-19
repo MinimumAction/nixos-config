@@ -1,10 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  # Imports
+  imports =[ ./hardware-configuration.nix ];
 
   
   # Bootloader
@@ -15,11 +13,6 @@
   # Networking
   networking.hostName = "CaptainNixOS";
   networking.networkmanager.enable = true;
-  
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   
   # Localization
@@ -128,26 +121,6 @@
     konsole
     oxygen
   ];
-
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-
-  # List services that you want to enable:
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # networking.firewall.enable = false; # Or disable the firewall altogether.
 
 
   # Automatic Garbage Collection
