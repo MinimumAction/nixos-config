@@ -92,20 +92,24 @@
   # VirtualBox
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
-  
+
+
+  # Firefox
+  programs.firefox.enable = true;
+
 
   # System Packages
   environment.systemPackages = with pkgs; [
-    kitty
+    konsole
     alacritty
     pciutils
-    librewolf
     vscode
     vim 
     neovim
     wget
     neofetch 
     git
+    tokyonight-gtk-theme
   ];
 
   
