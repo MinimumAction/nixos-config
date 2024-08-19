@@ -31,21 +31,18 @@
   };
 
 
-  # Windowing
+  # Windowing and desktop
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
+    desktopManager.budgie.enable = true;
+    displayManager.lightdm.enable = true;
     xkb = {
       layout = "us";
       variant = "";
     };
   };
   
-
-  # Desktop
-  services.xserver.desktopManager.budgie.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
-
 
   # Graphics Card Support
   hardware.opengl.enable = true;
