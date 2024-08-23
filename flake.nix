@@ -25,11 +25,11 @@
     # Configurations
     nixosConfigurations = {
       
-      # Desktop config
+      # CaptainNixOS desktop config
       CaptainNixOS = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/captainNixos/configuration.nix
+          ./hosts/CaptainNixOS/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -39,8 +39,8 @@
         ];
       };
   
-      # Live usb config
-      live = nixpkgs.lib.nixosSystem {
+      # nixosLive usb config
+      nixosLive = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./hosts/nixosLive/configuration.nix

@@ -1,4 +1,4 @@
-# CaptainNixos configuration
+# CaptainNixOS configuration
 
 { config, lib, pkgs, ... }:{
 
