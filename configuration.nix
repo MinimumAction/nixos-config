@@ -9,6 +9,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+
+  # Drivers for external wifi adapter
+  # boot.extraModulePackages = with config.boot.kernelPackages; [ rtl8812au ];
+  # boot.initrd.kernelModules = [ "8812au" ];
+
   
   # Networking
   networking.hostName = "CaptainNixOS";
