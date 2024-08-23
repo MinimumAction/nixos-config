@@ -100,8 +100,8 @@
 
   # System Packages
   environment.systemPackages = with pkgs; [
-    konsole
-    alacritty
+    mpv
+    lxqt.qterminal
     pciutils
     vscode
     vim 
@@ -110,6 +110,7 @@
     neofetch 
     git
     tokyonight-gtk-theme
+    anki-bin
   ];
 
   
