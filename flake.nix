@@ -3,7 +3,6 @@
   # Flake for NixOS configurations
   description = "NixOS configurations";
 
-
   # Flake inputs
   inputs = {
 
@@ -18,20 +17,31 @@
 
   };
 
-
   # Flake outputs
   outputs = inputs@{ nixpkgs, home-manager, ... }: {
     
     # Configurations
     nixosConfigurations = {
       
-      # CaptainNixOS desktop config
-      CaptainNixOS = nixpkgs.lib.nixosSystem {
+      # captNixOS desktop config
+      captNixOS = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/CaptainNixOS/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
+          ./hosts/captNixOS/configuration.nix
+          home-manager.nixosModules.home-manager{
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.minimumaction = import ./home/home.nix;
+          }
+        ];
+      };
+
+      # ltNixOS desktop config
+      ltNixOS = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/ltNixOS/configuration.nix
+          home-manager.nixosModules.home-manager{
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.minimumaction = import ./home/home.nix;
@@ -39,11 +49,11 @@
         ];
       };
   
-      # nixosLive usb config
+      # liveNixOS usb config
       nixosLive = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/nixosLive/configuration.nix
+          ./hosts/liveNixOS/configuration.nix
         ];
       };
     
