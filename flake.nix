@@ -18,16 +18,20 @@
   };
 
   # Flake outputs
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, ... }:
     
+    let 
+      system = "x86_64-linux";
+    in {
+
     # Configurations
     nixosConfigurations = {
       
-      # captNixOS desktop config
-      captNixOS = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+      # sherlock desktop config
+      sherlock = nixpkgs.lib.nixosSystem {
+        inherit system;
         modules = [
-          ./hosts/captNixOS/configuration.nix
+          ./hosts/sherlock/configuration.nix
           home-manager.nixosModules.home-manager{
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -36,11 +40,14 @@
         ];
       };
 
-      # ltNixOS desktop config
-      ltNixOS = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+      # mycroft (good) laptop config
+      # to come later
+
+      # lestrade (useless) laptop config
+      lestrade = nixpkgs.lib.nixosSystem {
+        inherit system;
         modules = [
-          ./hosts/ltNixOS/configuration.nix
+          ./hosts/lestrade/configuration.nix
           home-manager.nixosModules.home-manager{
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -49,13 +56,16 @@
         ];
       };
   
-      # liveNixOS usb config
-      liveNixOS = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+      # watson live usb config
+      watson = nixpkgs.lib.nixosSystem {
+        inherit system;
         modules = [
-          ./hosts/liveNixOS/configuration.nix
+          ./hosts/watson/configuration.nix
         ];
       };
+
+      # moriarty devious usb config
+      # to come later
     
     };
   

@@ -1,14 +1,16 @@
 { config, pkgs, ... }:
 
 {
+
+  # DO NOT CHANGE
+  home.stateVersion = "24.05";
+  
   # Set username and directory
   home.username = "minimumaction";
   home.homeDirectory = "/home/minimumaction";
 
-
-  # Packages
-  home.packages = with pkgs; [];
-
+  # Enable self management
+  programs.home-manager.enable = true;
 
   # Zsh shell
   programs.zsh = {
@@ -18,20 +20,15 @@
     syntaxHighlighting.enable = true;
   };
 
-
   # Git
   programs.git = {
     enable = true;
     userName = "MinimumAction";
     userEmail = "liguori.km@gmail.com";
+    extraConfig.init.defaultBranch = "main";
   };
   
-
-  # Enable self management
-  programs.home-manager.enable = true;
-
-
-  # DO NOT CHANGE
-  home.stateVersion = "24.05";
+  # Packages
+  home.packages = with pkgs; [];
 
 }

@@ -45,6 +45,7 @@
     wget
     iftop
     btop
+    home-manager
     
     # aesthetics
     neovim

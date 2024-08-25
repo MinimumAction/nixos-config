@@ -1,4 +1,4 @@
-# ltNixOS configuration
+# lestrade configuration
 
 { config, lib, pkgs, ... }:{
 
@@ -13,7 +13,7 @@
   system.stateVersion = "24.05";
 
   # # Networking and host name
-  networking.hostName = "ltNixOS";
+  networking.hostName = "lestrade";
   networking.networkmanager.enable = true;
 
   # Bootloader

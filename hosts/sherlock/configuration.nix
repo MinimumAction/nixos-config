@@ -1,4 +1,4 @@
-# captNixOS Configuration
+# sherlock Configuration
 # config for home desktop w/ AMD CPU and Nvidia RTX 2080 Ti
 
 { config, lib, pkgs, ... }:{
@@ -14,7 +14,7 @@
   system.stateVersion = "24.05";
 
   # Networking and Host name
-  networking.hostName = "captNixOS";
+  networking.hostName = "sherlock";
   networking.networkmanager.enable = true;
 
   # Bootloader

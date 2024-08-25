@@ -1,4 +1,4 @@
-# liveNixOS configuration
+# watson configuration
 # live usb configuration
 
 { config, lib, pkgs, modulesPath, ... }:{
