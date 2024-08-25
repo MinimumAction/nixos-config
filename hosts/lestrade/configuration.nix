@@ -44,6 +44,11 @@
     description = "Kevin Liguori";
     extraGroups = [ "networkmanager" "wheel" ];
   };
+  users.users.ghost = {
+    isNormalUser = true;
+    description = "Kevin Liguori";
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
 
   # Host specific system packages
   environment.systemPackages = with pkgs; [];
