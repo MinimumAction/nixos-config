@@ -12,8 +12,9 @@
   # DO NOT CHANGE
   system.stateVersion = "24.05";
 
-  # Host name
+  # # Networking and host name
   networking.hostName = "ltNixOS";
+  networking.networkmanager.enable = true;
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;

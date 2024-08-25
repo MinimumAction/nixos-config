@@ -13,8 +13,9 @@
   # DO NOT CHANGE
   system.stateVersion = "24.05";
 
-  # Host name
+  # Networking and Host name
   networking.hostName = "captNixOS";
+  networking.networkmanager.enable = true;
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
@@ -53,7 +54,7 @@
     description = "Kevin Liguori";
     extraGroups = [ "networkmanager" "wheel" "vboxusers" ];
   };
-  
+
   # Host specific system packages
   environment.systemPackages = with pkgs; [
     anki-bin

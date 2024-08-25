@@ -50,7 +50,7 @@
       };
   
       # liveNixOS usb config
-      nixosLive = nixpkgs.lib.nixosSystem {
+      liveNixOS = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./hosts/liveNixOS/configuration.nix

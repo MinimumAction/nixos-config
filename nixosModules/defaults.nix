@@ -35,9 +35,6 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  # Network manager
-  networking.networkmanager.enable = true;
-
   # Default system packages
   environment.systemPackages = with pkgs; [
     
