@@ -11,7 +11,7 @@
       wayland = true;
     };
     xkb.layout = "us";
-    xkb.variant = "";
+    xkb.variant = "mac";
   };
 
   # Hyprland
@@ -20,10 +20,14 @@
     xwayland.enable = true;
   };
 
+  # Waybar
+  programs.waybar.enable = true;
+
   # Graphical specific programs
   environment.systemPackages = with pkgs; [
     
     # programs
+    kitty
     lxqt.qterminal
     mpv
     vscode
