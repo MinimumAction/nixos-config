@@ -20,6 +20,10 @@
     xwayland.enable = true;
   };
 
+  # Portal?
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
   # Waybar
   programs.waybar.enable = true;
 
@@ -31,6 +35,16 @@
     lxqt.qterminal
     mpv
     vscode
+
+    # notification daemon
+    dunst
+    libnotify
+
+    # swww?
+    swww
+
+    # Rofi?
+    rofi-wayland
     
     # themes
     tokyonight-gtk-theme
