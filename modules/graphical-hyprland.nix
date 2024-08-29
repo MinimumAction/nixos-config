@@ -32,10 +32,12 @@
     
     # programs
     kitty
-    lxqt.qterminal
     mpv
     vscode
+
+    # applets/useful tools
     networkmanagerapplet
+    pavucontrol
 
     # notification daemon
     dunst
@@ -49,7 +51,6 @@
     
     # themes
     tokyonight-gtk-theme
-    font-awesome
 
   ];
 
@@ -62,6 +63,7 @@
   # Fonts
   fonts.packages = with pkgs; [
     font-awesome
+    nerdfonts
   ];
 
 }
