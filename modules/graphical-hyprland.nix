@@ -44,7 +44,7 @@
     swww
 
     # Rofi?
-    wofi
+    rofi-wayland
     
     # themes
     tokyonight-gtk-theme

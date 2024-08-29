@@ -6,112 +6,128 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 50,
-    "modules-left": ["custom/launch_wofi", "hyprland/workspaces"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["cpu", "memory", "disk", "network", "battery", "pulseaudio", "clock"],
+    "height": 25,
+    "modules-left": ["custom/appmenu", "hyprland/window"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["cpu", "memory", "disk", "network", "pulseaudio", "clock", "battery"],
 
-    "custom/launch_wofi": {
-        "format": "",
-        "on-click": "sh -c '(sleep 0.5s; wofi)' & disown",
+    // Custom appmenu
+    "custom/appmenu": {
+        "format": "Apps",
+        "on-click": "rofi -show drun -replace",
         "tooltip": false
     },
 
+    // Hyprland workspace
+    "hyprland/workspaces" : {
+        "on-click": "activate",
+        "active-only": false,
+        "all-outputs": true,
+        "format": "{}",
+        "format-icons": {
+			"urgent": "",
+			"active": "",
+			"default": ""
+        },
+        "persistent-workspaces": {
+             "*": 5
+        }       
+    },
+
+    // CPU
     "cpu": {
         "interval": 10,
-        "format": " {usage}%",
-        "max-length": 10,
-        "on-click": "kitty bashtop"
+        "format": "/ C {usage}% ",
+        "on-click": "kitty -e btop"
     },
 
+    // Memory
     "memory": {
-        "interval": 30,
-        "format": " {}%",
-        "max-length": 10,
-        "tooltip": true,
-        "tooltip-format": "Memory - {used:0.1f}GB used",
-        "on-click": "kitty --start-as=fullscreen --title bashtop sh -c 'bashtop'"
+        "interval": 10,
+        "format": "/ M {}% ",
+        "on-click": "kitty -e btop"
     },
     
+    // Disk 
     "disk": {
-        "interval": 30,
-        "format": "󰋊 {percentage_used}%",
+        "interval": 10,
+        "format": "D {percentage_used}% ",
         "path": "/",
-        "tooltip": true,
-        "tooltip-format": "HDD - {used} used out of {total} on {path} ({percentage_used}%)",
-        "on-click": "kitty --start-as=fullscreen --title bashtop sh -c 'bashtop'"
+        "on-click": "kitty -e btop"
+    }, 
+
+    // Group hardware
+    "group/hardware": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-memory",
+            "transition-left-to-right": false
+        },        
+        "modules": [
+            "cpu",
+            "memory",
+            "disk"
+        ]
     },
 
-    // Network manager applet
+    // Network 
     "network": {
-	    "interface": "wlp2s0",
-	    "format": "{ifname}",
-	    "format-wifi": " {icon}",
-        "format-ethernet": " ",
-        "format-disconnected": "睊",
-        "tooltip-format": "{essid}",
-        "on-click": "kitty nmtui",
-        "format-icons": ["󰤯 ","󰤟 ","󰤢 ","󰤢 ","󰤨 "],
-	    "max-length": 50
+        "interface": "{}",
+        "format": "{ifname}",
+        "format-wifi": "   {signalStrength}%",
+        "format-ethernet": "  {ipaddr}",
+        "format-disconnected": "Not Connected", //An empty format will hide the module.
+        "tooltip-format": " {ifname} via {gwaddri}",
+        "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50,
+        "on-click": "kitty -e nmtui"
     },
     
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-    },
-
+    // Pulseaudio
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "",
-        //"on-click": "~/.config/HyprV/waybar/scripts/volume --toggle",
-        "on-click-right": "pavucontrol",
-        //"on-scroll-up": "~/.config/HyprV/waybar/scripts/volume --inc",
-        //"on-scroll-down": "~/.config/HyprV/waybar/scripts/volume --dec",
-        "scroll-step": 5,
+        "scroll-step": 1, // %, can be a float
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
-        }
+            "default": ["", " ", " "]
+        },
+        "on-click": "pavucontrol"
     },
     
+    // Clock
     "clock": {
-        "format": "{:%H:%M}  ",
-        "format-alt": "{:%A, %B %d, %Y (%R)}  ",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "calendar": {
-                    "mode"          : "year",
-                    "mode-mon-col"  : 3,
-                    "weeks-pos"     : "right",
-                    "on-scroll"     : 1,
-                    "on-click-right": "mode",
-                    "format": {
-                              "months":     "<span color='#ffead3'><b>{}</b></span>",
-                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-                              }
-                    },
-        "actions":  {
-                    "on-click-right": "mode",
-                    "on-click-forward": "tz_up",
-                    "on-click-backward": "tz_down",
-                    "on-scroll-up": "shift_up",
-                    "on-scroll-down": "shift_down"
-                    }
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    
+    // Battery
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}   {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-alt": "{icon}  {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
     }
 
 }
