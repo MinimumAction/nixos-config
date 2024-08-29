@@ -6,7 +6,7 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 25,
+    // "height": 25,
     "modules-left": ["custom/appmenu", "hyprland/window"],
     "modules-center": ["hyprland/workspaces"],
     "modules-right": ["cpu", "memory", "disk", "network", "pulseaudio", "clock", "battery"],
