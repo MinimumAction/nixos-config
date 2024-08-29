@@ -44,14 +44,18 @@
     swww
 
     # Rofi?
-    rofi-wayland
+    wofi
     
     # themes
     tokyonight-gtk-theme
+    font-awesome
 
   ];
 
   # Firefox browser
   programs.firefox.enable = true;
+
+  # File manager
+  programs.thunar.enable = true;
 
 }
