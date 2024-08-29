@@ -59,4 +59,9 @@
   # File manager
   programs.thunar.enable = true;
 
+  # Fonts
+  fonts.packages = with pkgs; [
+    font-awesome
+  ];
+
 }
