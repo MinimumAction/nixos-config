@@ -35,6 +35,7 @@
     lxqt.qterminal
     mpv
     vscode
+    networkmanagerapplet
 
     # notification daemon
     dunst
