@@ -38,6 +38,7 @@
     # applets/useful tools
     networkmanagerapplet
     pavucontrol
+    wlogout
 
     # notification daemon
     dunst
@@ -63,7 +64,6 @@
   # Fonts
   fonts.packages = with pkgs; [
     font-awesome
-    nerdfonts
   ];
 
 }

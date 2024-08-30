@@ -1,68 +1,75 @@
 {
-	"layer": "top",
-	"modules-left": ["tray", "hyprland/workspaces"],
-	"modules-center": [],
-	"modules-right": ["cpu", "memory", "disk", "temperature", "pulseaudio", "battery", "clock"],
-	
-    // Audio  CRAP
-	"pulseaudio": {
-		"tooltip": false,
-		"scroll-step": 5,
-		"format": "{icon} {volume}%",
-		"format-muted": "{icon} {volume}%",
-		"on-click":"pwvucontrol",
-		"format-icons": {
-			"default": ["", "", ""]
-		}
-	},
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "spacing": 4, // Gaps between modules (4px)
 
-    // Battery   CRAP
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": [
-            "󰂎",
-            "󰁺",
-            "󰁻",
-            "󰁼",
-            "󰁽",
-            "󰁾",
-            "󰁿",
-            "󰂀",
-            "󰂁",
-            "󰂂",
-            "󰁹"
-        ]
+    // Left modules  
+    "modules-left": [
+        "custom/exit",
+        "tray",
+        "group/quicklinks",
+        "hyprland/window"
+    ],
+
+    // Center modules
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+
+    // Right modules
+    "modules-right": [
+        "cpu", 
+        "memory", 
+        "disk",
+        // "temperature",
+        // "pulseaudio", 
+        "battery", 
+        "clock"
+    ],
+    
+    // Power Menu
+    "custom/exit": {
+        "format": "",
+        "tooltip-format": "Powermenu",
+        "on-click": "wlogout -b 4",
+        "tooltip": false
     },
 
-    // Tray
-	"tray":{
-		"icon-size":18,
-		"spacing": 10
-	},
+    // System tray
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
 
+    // Window
+
+
+    // Workspaces
+    "hyprland/workspaces" : {
+        "on-click": "activate",
+        "active-only": false,
+        "all-outputs": true,
+        "format": "{}",
+        "format-icons": {
+			"urgent": "",
+			"active": "",
+			"default": ""
+        },
+        "persistent-workspaces": {
+             "*": 5
+        }       
+    },
+    
     // CPU
     "cpu": {
-        "interval": 5,
         "format": "  {usage}%",
-        "max-length": 10
+        "on-click": "kitty -e btop"
     },
 
-    // Temp
-    "temperature": {
-        "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon/hwmon3",
-        "input-filename": "temp1_input",
-        "critical-threshold": 75,
-        "tooltip": false,
-        "format-critical": "({temperatureC}°C)",
-        "format": "({temperatureC}°C)"
+    // Memory
+    "memory": {
+        "format": "  {percentage}%",
+        "on-click": "kitty -e btop"
     },
 
     // Disk
@@ -70,44 +77,61 @@
         "interval": 30,
         "format": "󰋊 {percentage_used}%",
         "path": "/",
-        "tooltip": true,
-        "unit": "GB",
-        "tooltip-format":  "Available {free} of {total}"
+        "on-click": "kitty -e btop"
+    }, 
+    
+    // Temp
+    "temperature": {
+        "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+        "input-filename": "temp2_input",
+        "critical-threshold": 75,
+        "tooltip": false,
+        "format-critical": "󰋊 {temperatureC}°C",
+        "format": "󰋊 {temperatureC}°C"
     },
-
-    // Memory
-    "memory": {
-        "interval": 10,
-        "format": "  {percentage}%",
-        "max-length": 10,
-        "tooltip": true,
-        "tooltip-format": "RAM - {used:0.1f}GiB used"
+    
+    // Pulseaudio
+    // "pulseaudio": {
+    //     // "scroll-step": 1, // %, can be a float
+    //     "format": "{icon}  {volume}%",
+    //     "format-bluetooth": "{volume}% {icon} {format_source}",
+    //     "format-bluetooth-muted": " {icon} {format_source}",
+    //     "format-muted": " {format_source}",
+    //     "format-source": "{volume}% ",
+    //     "format-source-muted": "",
+    //     "format-icons": {
+    //         "headphone": "",
+    //         "hands-free": "",
+    //         "headset": "",
+    //         "phone": "",
+    //         "portable": "",
+    //         "car": "",
+    //         "default": ["", " ", " "]
+    //     },
+    //     "on-click": "pavucontrol"
+    // },
+    
+    // Battery
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}   {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-alt": "{icon}  {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
     },
-
+    
     // Clock
     "clock": {
-        "format": "      {:%R\n %d.%m.%Y}",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "calendar": {
-            "mode": "year",
-            "mode-mon-col": 3,
-            "weeks-pos": "right",
-            "on-scroll": 1,
-            "on-click-right": "mode",
-            "format": {
-                "months": "<span color='#ffead3'><b>{}</b></span>",
-                "days": "<span color='#ecc6d9'><b>{}</b></span>",
-                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-            }
-        },
-        "actions": {
-            "on-click-right": "mode",
-            "on-click-forward": "tz_up",
-            "on-click-backward": "tz_down",
-            "on-scroll-up": "shift_up",
-            "on-scroll-down": "shift_down"
-        }
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
     }
+    
 }
