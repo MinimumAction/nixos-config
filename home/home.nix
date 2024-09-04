@@ -27,6 +27,15 @@
     userEmail = "liguori.km@gmail.com";
     extraConfig.init.defaultBranch = "main";
   };
+
+  # Emacs
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs;
+    extraConfig = ''
+      (setq standard-indent 2)
+    '';
+  };
   
   # Packages
   home.packages = with pkgs; [];
