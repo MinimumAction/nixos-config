@@ -38,9 +38,15 @@
   # Default system packages
   environment.systemPackages = with pkgs; [
     
-    # tools & utils
+    # terminal 
+    kitty
+
+    # utils
     vim 
+    neovim
     git
+    
+    # tools
     pciutils
     wget
     iftop
@@ -48,7 +54,6 @@
     home-manager
     
     # aesthetics
-    neovim
     neofetch 
 
   ];

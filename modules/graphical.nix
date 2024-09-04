@@ -24,7 +24,7 @@
     # programs
     lxqt.qterminal
     mpv
-    vscode
+    vscodium
     
     # themes
     tokyonight-gtk-theme
