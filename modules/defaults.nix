@@ -37,9 +37,6 @@
 
   # Default system packages
   environment.systemPackages = with pkgs; [
-    
-    # terminal 
-    kitty
 
     # utils
     vim 

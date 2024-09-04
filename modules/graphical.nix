@@ -22,7 +22,7 @@
   environment.systemPackages = with pkgs; [
     
     # programs
-    lxqt.qterminal
+    kitty
     mpv
     vscode
     
