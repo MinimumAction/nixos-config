@@ -47,6 +47,7 @@
     git
     
     # tools
+    unzip
     pciutils
     wget
     iftop
