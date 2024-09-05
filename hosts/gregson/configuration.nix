@@ -1,5 +1,5 @@
-# sherlock Configuration
-# config for home desktop w/ AMD CPU and Nvidia RTX 2080 Ti
+# gregson Configuration
+# config for laptop w/ Nvidia GTX 960
 
 { config, lib, pkgs, ... }:{
 
@@ -22,16 +22,16 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Nvidia settings
-  hardware.opengl.enable = true;
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-  services.xserver.videoDrivers = [ "nvidia" ]; # Graphics drivers
+  # hardware.opengl.enable = true;
+  # hardware.nvidia = {
+  #   modesetting.enable = true;
+  #   powerManagement.enable = false;
+  #   powerManagement.finegrained = false;
+  #   open = false;
+  #   nvidiaSettings = true;
+  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
+  # };
+  # services.xserver.videoDrivers = [ "nvidia" ]; # Graphics drivers
 
   # Sound settings
   hardware.pulseaudio.enable = false;

@@ -43,7 +43,20 @@
       # mycroft (good) laptop config
       # to come later
 
-      # lestrade (useless) laptop config
+      # gregson (mostly useless) laptop config
+      gregson = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./hosts/gregson/configuration.nix
+          home-manager.nixosModules.home-manager{
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.minimumaction = import ./home/home.nix;
+          }
+        ];
+      };
+
+      # lestrade (definitely useless) laptop config
       lestrade = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
