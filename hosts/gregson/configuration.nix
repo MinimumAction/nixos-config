@@ -14,7 +14,7 @@
   system.stateVersion = "24.05";
 
   # Networking and Host name
-  networking.hostName = "sherlock";
+  networking.hostName = "gregson";
   networking.networkmanager.enable = true;
 
   # Bootloader
