@@ -64,7 +64,7 @@
           home-manager.nixosModules.home-manager{
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.minimumaction = import ./home/home.nix;
+            home-manager.users.minimumaction = import ./home/home-lestrade.nix;
           }
         ];
       };

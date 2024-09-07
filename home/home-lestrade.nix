@@ -1,7 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, ... }:{
 
-{
-
+  # Imports
+  imports = [
+    ./programs/rofi/default.nix # import rofi config
+  ];
+  
   # DO NOT CHANGE
   home.stateVersion = "24.05";
   

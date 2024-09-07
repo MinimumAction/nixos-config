@@ -25,14 +25,14 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [ rtl8812au ];
   boot.initrd.kernelModules = [ "8812au" ];
 
-  # Keyboard layout
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "mac";
+  # Keyboard layout and touchpad support
+  services = {
+    xserver.xkb = {
+      layout = "us";
+      variant = "mac";
+    };
+    libinput.enable = true;
   };
-  
-  # Enable touchpad support
-  services.libinput.enable = true;
 
   # Sound settings
   hardware.pulseaudio.enable = false;

@@ -8,9 +8,13 @@
     ./graphical.nix # graphical environment
   ];
 
-  # Windowing and desktop environment
+  # Xserver services
   services.xserver = {
-    enable = true;   
+
+    # Enable Xserver
+    enable = true;
+
+    # Desktop manager   
     desktopManager = {
       xterm.enable = false;
       xfce = {
@@ -19,19 +23,24 @@
         enableXfwm = false;
       };
     };
+
+    # Window manager
     windowManager = {
       xmonad = {
         enable = true;
         enableContribAndExtras = true;
-        extraPackages = haskellPackages : [
+        extraPackages = haskellPackages: [
           haskellPackages.xmonad-contrib
           haskellPackages.xmonad-extras
           haskellPackages.xmonad
         ];
       };
     };
-    displayManager.defaultSession = "xfce+xmonad";
+
   };
+
+  # Display manager
+  services.displayManager.defaultSession = "xfce+xmonad";
 
   # Excluded packages from desktop environment
   # environment.xfce.excludePackages = with pkgs; [];
