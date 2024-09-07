@@ -1,22 +1,7 @@
 # graphical.nix
-# desktop environment & graphical programs
+# graphical programs for every DE
 
 { pkgs, ... }: {
-
-  # Windowing and desktop environment
-  services.xserver = {
-    enable = true;
-    desktopManager.budgie.enable = true;
-    displayManager.lightdm.enable = true;
-    xkb.layout = "us";
-    xkb.variant = "";
-  };
-
-  # Excluded packages from desktop environment
-  environment.budgie.excludePackages = with pkgs; [
-    vlc
-    mate.mate-terminal
-  ];
 
   # Graphical specific programs
   environment.systemPackages = with pkgs; [

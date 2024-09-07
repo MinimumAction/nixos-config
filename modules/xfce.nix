@@ -1,7 +1,12 @@
-# graphical-xfce.nix
-# desktop environment & graphical programs
+# xfce.nix
+# xfce desktop environment
 
 { pkgs, ... }: {
+
+  # Imports 
+  imports =[
+    ./graphical.nix # graphical environment
+  ];
 
   # Windowing and desktop environment
   services = {
@@ -16,19 +21,7 @@
   # Excluded packages from desktop environment
   # environment.xfce.excludePackages = with pkgs; [];
 
-  # Graphical specific programs
-  environment.systemPackages = with pkgs; [
-    
-    # programs
-    kitty
-    vscode
-    
-    # themes
-    tokyonight-gtk-theme
-
-  ];
-
-  # Firefox browser
-  programs.firefox.enable = true;
+  # XFCE specific programs
+  environment.systemPackages = with pkgs; [];
 
 }

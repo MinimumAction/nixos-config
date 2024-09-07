@@ -1,4 +1,4 @@
-# graphical-hyprland-desktop.nix
+# hyprland.nix
 # desktop environment & graphical programs
 
 { pkgs, ... }: {

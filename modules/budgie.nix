@@ -1,0 +1,40 @@
+# budgie.nix
+# budgie desktop environment
+
+{ pkgs, ... }: {
+
+  # Imports 
+  imports =[
+    ./graphical.nix # graphical programs
+  ];
+
+  # Windowing and desktop environment
+  services.xserver = {
+    enable = true;
+    desktopManager.budgie.enable = true;
+    displayManager.lightdm.enable = true;
+  };
+
+  # Excluded packages from desktop environment
+  environment.budgie.excludePackages = with pkgs; [
+    vlc
+    mate.mate-terminal
+  ];
+
+  # Graphical specific programs
+  environment.systemPackages = with pkgs; [
+    
+    # programs
+    kitty
+    mpv
+    vscode
+    
+    # themes
+    tokyonight-gtk-theme
+
+  ];
+
+  # Firefox browser
+  programs.firefox.enable = true;
+
+}
