@@ -3,11 +3,6 @@
 
 { pkgs, ... }: {
 
-  # Imports 
-  imports =[
-    ./graphical.nix # graphical environment
-  ];
-
   # Windowing and desktop environment
   services = {
     displayManager.defaultSession = "xfce";

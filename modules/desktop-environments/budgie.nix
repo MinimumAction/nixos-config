@@ -3,11 +3,6 @@
 
 { pkgs, ... }: {
 
-  # Imports 
-  imports =[
-    ./graphical.nix # graphical programs
-  ];
-
   # Windowing and desktop environment
   services.xserver = {
     enable = true;
@@ -21,20 +16,7 @@
     mate.mate-terminal
   ];
 
-  # Graphical specific programs
-  environment.systemPackages = with pkgs; [
-    
-    # programs
-    kitty
-    mpv
-    vscode
-    
-    # themes
-    tokyonight-gtk-theme
-
-  ];
-
-  # Firefox browser
-  programs.firefox.enable = true;
+  # Budgie specific programs
+  environment.systemPackages = with pkgs; [];
 
 }

@@ -1,5 +1,5 @@
-# sherlock Configuration
-# config for home desktop w/ AMD CPU and Nvidia RTX 2080 Ti
+# mycroft configuration
+# config for thinkpad t14
 
 { config, lib, pkgs, ... }:{
 
