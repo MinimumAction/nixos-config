@@ -6,7 +6,9 @@
   # Imports
   imports =[ 
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix" # minimal NixOS install
-    ./../../modules/defaults.nix # default settings/programs
+    ./../../modules/desktop-environments/budgie.nix # desktop environment
+    ./../../modules/defaults.nix # default settings & programs
+    ./../../modules/graphical.nix # graphical programs
   ];
 
   # Drivers for external wifi adapter
