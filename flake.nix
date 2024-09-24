@@ -41,7 +41,17 @@
       };
 
       # mycroft (good) laptop config
-      # to come later
+      mycroft = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./hosts/mycroft/configuration.nix
+          home-manager.nixosModules.home-manager{
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.minimumaction = import ./home/home.nix;
+          }
+        ];
+      };
 
       # gregson (mostly useless) laptop config
       gregson = nixpkgs.lib.nixosSystem {
