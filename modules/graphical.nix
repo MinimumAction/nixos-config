@@ -10,6 +10,7 @@
     kitty
     mpv
     vscode
+    obsidian
     
     # themes
     tokyonight-gtk-theme

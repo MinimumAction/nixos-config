@@ -1,38 +1,21 @@
 { inputs, config, lib, pkgs, ... }: {
 
   # Imports
-  imports = [
-    ./programs/rofi/default.nix # import rofi config
-  ];
+  imports = [];
 
   # User
   users.kevin = {
-    isNormalUser = true;
-    home = "/home/kevin";
-    # hashedPassword = config.modules.secrets.kevinHashedPassword;
-    shell = pkgs.zsh;
-    extraGroups = [
-      "docker"
-      "libvirtd"
-      "networkmanager"
-      "wheel"
-      "wireshark"
+    isNormalUser = true; # Normal user
+    home = "/home/kevin"; # Home directory
+    shell = pkgs.zsh; # Shell
+    extraGroups = [ "networkmanager" "wheel" ]; # Groups
+
+    # User packages
+    packages = with pkgs; [
+
     ];
+    
   };
-
-
-  home-manager.users.kevin = {
-  };
-  
-  # DO NOT CHANGE
-  home.stateVersion = "24.05";
-  
-  # Set username and directory
-  home.username = "minimumaction";
-  home.homeDirectory = "/home/minimumaction";
-
-  # Enable self management
-  programs.home-manager.enable = true;
 
   # Zsh shell
   programs.zsh = {
@@ -50,7 +33,4 @@
     extraConfig.init.defaultBranch = "main";
   };
   
-  # Packages
-  home.packages = with pkgs; [];
-
 }
