@@ -67,6 +67,7 @@
   # Host specific system packages
   environment.systemPackages = with pkgs; [
     anki-bin
+    mathematica
   ];
 
 }
