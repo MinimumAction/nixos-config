@@ -65,6 +65,8 @@
   };
 
   # Host specific system packages
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [
+    anki-bin
+  ];
 
 }
